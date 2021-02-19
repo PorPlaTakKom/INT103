@@ -140,3 +140,39 @@ public class CurrentAccount extends BankAccount {
 
 * **บัญชีออมทรัพย** - ถอนเงินได้สูงสุดไม่เกินเงินที่มีอยู่ในบัญชี
 * **บัญชีกระแสรายวัน** - ถอนเงินได้เกินเงินที่มีอยู่ในบัญชี แต่ไม่เกินวงเงินที่ตั้งไว้
+
+>ดังนั้นเราก็จะทำการเขียนโค้ดถอนเงินไว้ที่ตัว BankAccount ที่เป็น Base class ของมันก่อน ซึ่งได้ประมาณนี้
+
+**Class BankAccount**
+```
+public class BankAccount {
+    private double balance;
+    public double Balance;
+    public String OwnerName;
+
+    public BankAccount(String OwnName){
+        this.OwnerName = OwnName;
+        this.balance = 0;
+    }
+
+    public void Deposit(double amount){
+        if( amount > 0){
+            balance += amount;
+        }
+    }
+
+    public void Withdraw(double amount)
+    {
+        if (amount <= balance)
+        {
+            balance -= amount;
+        }
+    }
+
+    public double getBalance() { return balance; }
+
+    public String getOwnerName() { return OwnerName; }
+
+    public void setOwnerName(String ownerName) { OwnerName = ownerName; }
+}
+```
