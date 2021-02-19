@@ -1,16 +1,14 @@
 # Inheritance
 
 > Inheritance คือการสืบทอดคุณสมบัติ จาก Model A ไปยัง Model อื่นๆได้ ซึ่งมันจะช่วยให้เราเพิ่มความสามารถใหม่ๆเข้าไปได้โดยที่ไม่ต้องไปยุ่งกับโค้ดเก่าที่เคยเขียนไว้
-***
 ## ตัวอยย่าง
 
 > สมมุติว่าเราต้องเขียน โปรแกรมบัญชีธนาคาร ซึ่งบัญชีออมทรัพย์สามารถเก็บข้อมูล เงินในบัญชี และ เจ้าของบัญชี ได้ และอย่าลืมนะว่าเราต้อง ฝากเงินเข้าบัญชี ได้ด้วย ดังนั้นเราก็น่าจะได้ Model ออกมาประมาณนี้
 
-***
 **Class SavingAccount**
 ```
 public class SavingAccount {
-    private double balance;
+    protected double balance;
     public double Balance;
     public String OwnerName;
 
@@ -42,7 +40,7 @@ public class SavingAccount {
 **Class CurrentAccount**
 ```
 public class CurrentAccount {
-    private double balance;
+    protected double balance;
     public double Balance;
     public String OwnerName;
 
@@ -80,7 +78,7 @@ public class CurrentAccount {
 **Class BankAccount**
 ```
 public class BankAccount {
-    private double balance;
+    protected double balance;
     public double Balance;
     public String OwnerName;
 
@@ -146,7 +144,7 @@ public class CurrentAccount extends BankAccount {
 **Class BankAccount**
 ```
 public class BankAccount {
-    private double balance;
+    protected double balance;
     public double Balance;
     public String OwnerName;
 
@@ -176,3 +174,42 @@ public class BankAccount {
     public void setOwnerName(String ownerName) { OwnerName = ownerName; }
 }
 ```
+> เพียงเท่านี้เราก็จะสามารถถอนเงินได้ละ ส่วน บัญชีกระแสรายวัน เราก็ไปเขียนเพิ่มให้มันสามารถถอนเงินได้เกินเงินที่มี อยู่ในบัญชี ซึ่งสมมุติว่าวงเงินกู้ได้ไม่เกิน 1,000 ละกัน ดังนั้นเราก็จะได้โค้ดออกมาตามนี้
+
+**Class SavingAccount**
+```
+public class SavingAccount extends BankAccount {
+
+    private double credit = 1000;
+
+    public SavingAccount(String OwnName){
+        super(OwnName);
+    }
+
+    @Override
+    public void Withdraw(double amount)
+    {
+        if (amount <= super.getBalance() + credit)
+        {
+            super.balance -= amount;
+        }
+    }
+}
+
+```
+
+# ความสัมพันธ์แบบ Is a
+
+เมื่อไหร่ก็ตามที่เราใช้ Inheritance ปุ๊ป เจ้าพวก Sub class ทั้งหลายจะมีความสัมพันธ์ที่เรียกว่า "Is a" ทันที หมายความว่า เราก็จะมองว่า บัญชีออมทรัพย์ และ บัญชีกระแสรายวัน มันเป็น บัญชีธนาคาร ประเภทหนึ่งทันที ซึ่งมันจะมีบทบาทที่สำคัญในเรื่องของการนำไปใช้กับ Polymorphism ในบทถัดไปอย่างมาก
+
+> **ข้อควรระวัง** \
+อย่าใช้ Inheritance เพราะเราขี้เกียจเขียนโค้ดซ้ำๆ เพราะมันจะได้ความสัมพันธ์แบบ Is A เข้าไปด้วย (เดี๋ยวไปดูความร้ายแรงของมันในบทของ Polymorphism เอาละกัน)
+
+> **จงทำ Inheritance เมื่อ** \
+Class พวกนั้นมันเป็นประเภทเดียวกันจริงๆ
+
+
+# ลำดับชั้น
+ในการทำ Inheritance มันจะมีลำดับชั้นความสัมพันธ์กันว่าใครเป็น คลาสแม่ คลาสลูก กันเสมอ ซึ่งจากโค้ดตัวอย่างด้านบนทั้งหมดก็สามารถเอามาเขียนเป็นแผนภาพ UML ง่ายๆได้ประมาณนี้
+
+[![image][https://gblobscdn.gitbook.com/assets%2F-Lm0_idNbY6k1lwp6hm4%2F-M1lfqlFTvI3gmheTI_q%2F-M1lfv-2-JCTy1CgkFXy%2Fimage%20(952).png](clickToLink)
