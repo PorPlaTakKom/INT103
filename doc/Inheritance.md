@@ -39,8 +39,6 @@ public class SavingAccount {
 }
 
 ```
-
-***
 **Class CurrentAccount**
 ```
 public class CurrentAccount {
@@ -79,7 +77,6 @@ public class CurrentAccount {
 
 >เราสามารถนำหลักการ Inheritance มาช่วยในเรื่องนี้ได้ โดยการสร้าง Model ต้นแบบ ขึ้นมา แล้วทำการย้ายของที่ซ้ำกันไปไว้ในตัวต้นแบบตัวนั้น ซึ่งในตัวอย่างของที่เรากำลังทำอยู่มันคือ บัญชีธนาคาร ดังนั้นเราเลยสร้างคลาส BankAccount ขึ้นมาใหม่
 
-***
 **Class BankAccount**
 ```
 public class BankAccount {
@@ -106,4 +103,4 @@ public class BankAccount {
 }
 
 ```
-> แล้วทำการย้ายของที่มันซ้ำกันจาก บัญชีออมทรัพย์ กับ บัญชีกระแสรายวัน มาไว้ในตัว BankAccount
+> แล้วทำการย้ายของที่มันซ้ำกันจาก บัญชีออมทรัพย์ กับ บัญชีกระแสรายวัน มาไว้ในตัว BankAccount แล้วนำเอาไป สืบทอด
