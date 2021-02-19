@@ -104,3 +104,21 @@ public class BankAccount {
 
 ```
 > แล้วทำการย้ายของที่มันซ้ำกันจาก บัญชีออมทรัพย์ กับ บัญชีกระแสรายวัน มาไว้ในตัว BankAccount แล้วนำเอาไป สืบทอด
+
+**Class SavingAccount**
+```
+public class SavingAccount extends BankAccount {
+    public SavingAccount(String OwnName){
+        super(OwnName);
+    }
+}
+```
+**Class CurrentAccount**
+```
+public class CurrentAccount extends BankAccount {
+    public CurrentAccount(String OwnName){
+        super(OwnName);
+    }
+}
+```
+>เพียงเท่านี้ บัญชีออมทรัพย์ และ บัญชีกระแสรายวัน ก็จะมีความสามารถทุกอย่างที่ตัวต้นแบบมีนั่นเอง ดังนั้นลองเขียนโค้ดเล่นกับบัญชีทั้ง 2 ตัวของเราดู
